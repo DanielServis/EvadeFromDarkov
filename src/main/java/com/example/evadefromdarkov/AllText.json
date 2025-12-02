@@ -1,0 +1,159 @@
+{
+  "Player": "player",
+  "Trader": {
+    "name": "trader",
+    "health": 30,
+    "damage": 0
+  },
+  "Dog": {
+    "description": "a rabid irradiated german shepperd",
+    "health": 20,
+    "damage": 15
+  },
+  "Scav1": {
+    "description": "a tall sickly young man holding a knife",
+    "health": 50,
+    "damage": 20
+  },
+  "Scav2": {
+    "description": "a short stumbling old man",
+    "health": 30,
+    "damage": 30
+  },
+  "Creation": {
+    "description": "a large screaming irradiated beast",
+    "health": 100,
+    "damage": 50
+  },
+
+  "Map":{
+    "name":"map",
+    "description":"a tattered piece of paper etched with random drawings"
+  },
+  "DogFood":{
+    "name":"dog-food",
+    "description":"a sealed tin of dog food",
+    "uses": "dog"
+  },
+  "Coin":{
+    "name":"coin",
+    "description":"a rusted copper coin"
+  },
+  "Syringe":{
+    "name":"syringe",
+    "description":"a dirty syringe filled with a glowing liquid"
+  },
+  "Axe":{
+    "name":"axe",
+    "description":"an old wood cutting axe",
+    "damage":20,
+    "uses": ["dog","wood"]
+  },
+  "Gun":{
+    "name":"shotgun",
+    "description":"a model 1912 winchester shotgun",
+    "damage":40,
+    "uses": ["dog","scav1","scav2"]
+  },
+
+  "Heaven":{
+    "symbol": "|X|",
+    "description": "all dogs go here"
+  },
+  "Spawn":{
+    "symbol": "\u001B[35m[@]",
+    "description": "your first memory of this place"
+  },
+  "TraderSpot":{
+    "symbol": "\u001B[33m[$]",
+    "description": "an old man laying under a sheet of metal"
+  },
+  "AbandonedHouse":{
+    "symbol": "\u001B[34m[^]",
+    "description": "an old abandoned and barricaded house"
+  },
+  "DogKennel":{
+    "symbol": "\u001B[31m[*]",
+    "description": "a dog kennel"
+  },
+  "Zone":{
+    "symbol": "\u001B[32m[?]",
+    "description": "a mysterious green glow"
+  },
+  "Bunker":{
+    "symbol": "\u001B[36m[%]",
+    "description": "a locked 1970s fallout bunker"
+  },
+  "Wilderness2":{
+    "symbol": "[2]",
+    "description": "a few dead bushes"
+  },
+  "Wilderness3":{
+    "symbol": "[3]",
+    "description": "a cold empty field"
+  },
+  "Wilderness4":{
+    "symbol": "[4]",
+    "description": "a small forest"
+  },
+  "MineField":{
+    "symbol": "\u001B[31m[P]",
+    "description": "a sign saying minefield"
+  },
+  "Wilderness6":{
+    "symbol": "[6]",
+    "description": "a small collapsed well"
+  },
+  "Wilderness7":{
+    "symbol": "[7]",
+    "description": "a bed of mushrooms"
+  },
+  "Wilderness8":{
+    "symbol": "[8]",
+    "description": "a small pond"
+  },
+  "Wilderness9":{
+    "symbol": "[9]",
+    "description": "a puddle of brown water"
+  },
+  "WildernessA":{
+    "symbol": "[A]",
+    "description": "an abandoned tractor"
+  },
+  "WildernessB":{
+    "symbol": "[B]",
+    "description": "a dead sheep covered in flies"
+  },
+  "WildernessC":{
+    "symbol": "[C]",
+    "description": "a dead cow"
+  },
+  "WildernessD":{
+    "symbol": "[D]",
+    "description": "a field of rotten wheat"
+  },
+  "WildernessE":{
+    "symbol": "[E]",
+    "description": "a mysterious shed"
+  },
+  "WildernessG":{
+    "symbol": "[G]",
+    "description": "an abandoned car"
+  },
+  "WildernessH":{
+    "symbol": "[H]",
+    "description": "what is left of a dirt road"
+  },
+  "WildernessI":{
+    "symbol": "[I]",
+    "description": "the remainder of a dog's meal"
+  },
+  "ScavengerCamp":{
+    "symbol": "\u001B[31m[J]",
+    "description": "a scavenger's camp"
+  },
+  "WildernessK":{
+    "symbol": "[K]",
+    "description": "a lone ash tree"
+  }
+}
