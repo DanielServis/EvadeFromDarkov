@@ -3,8 +3,8 @@ package com.example.evadefromdarkov;
 public class Weapon extends Item{
     private int damage;
 
-    public Weapon(String name, String description,int damage){
-        super(name,description);
+    public Weapon(String name, String description, int id, int damage){
+        super(name,description,id);
         this.damage = damage;
     }
 

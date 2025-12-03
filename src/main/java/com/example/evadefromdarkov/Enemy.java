@@ -1,19 +1,20 @@
 package com.example.evadefromdarkov;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public abstract class Enemy implements Serializable
 {
+    @Serial
+    private static final long serialVersionUID = 1L;
     protected String description;
     protected int health;
     protected int damage;
-    protected int currentRoomNumber;
-    transient protected Room currentRoom;
+    protected Room currentRoom;
 
     public Enemy(String description,Room room,int health,int damage){;
         this.description = description;
         this.currentRoom = room;
-        this.currentRoomNumber = room.getRoomNumber();
         this.health = health;
         this.damage = damage;
     }
@@ -25,15 +26,6 @@ public abstract class Enemy implements Serializable
 
     public Room getCurrentRoom() {
         return currentRoom;
-    }
-
-    public int getCurrentRoomNumber(){
-        return currentRoomNumber;
-    }
-
-    public void setCurrentRoom(Room newRoom) {
-        this.currentRoom = newRoom;
-        this.currentRoomNumber = newRoom.getRoomNumber();
     }
 
     public int getHealth(){

@@ -2,7 +2,7 @@ package com.example.evadefromdarkov;
 
 import java.util.ArrayList;
 
-public interface Talkable
+public interface ID
 {
-    public ArrayList<String> getDialog();
+    public int getID();
 }

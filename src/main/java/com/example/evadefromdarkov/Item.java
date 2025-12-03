@@ -3,7 +3,7 @@ package com.example.evadefromdarkov;
 import java.io.Serial;
 import java.io.Serializable;
 
-public class Item implements Serializable {
+public class Item implements Serializable, ID{
     @Serial
     private static final long serialVersionUID = 1L;
     private String description;
@@ -12,10 +12,11 @@ public class Item implements Serializable {
     private int id;
     private boolean isVisible;
 
-    public Item(String name, String description) {
+    public Item(String name, String description, int id) {
         this.name = name;
         this.description = description;
         this.isVisible = true;
+        this.id = id;
     }
 
     public String getDescription() {
@@ -56,5 +57,10 @@ public class Item implements Serializable {
 
     public void setVisible(boolean visible) {
         isVisible = visible;
+    }
+
+    @Override
+    public int getID() {
+        return 0;
     }
 }

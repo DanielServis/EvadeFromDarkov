@@ -19,10 +19,7 @@ public class Dog extends Enemy {
         return tame;
     }
 
-    public void dropItems()
-    {
-        Item dogCarcass = new Item("dog-carcass","look what you've done, a dead dog");
-        getCurrentRoom().getItems().addLast(dogCarcass);
-        dogCarcass.setLocation("heaven");
+    public void dropItems() {
+
     }
 }

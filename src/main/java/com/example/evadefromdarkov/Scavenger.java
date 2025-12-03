@@ -13,9 +13,6 @@ public class Scavenger extends Enemy {
 
     public void dropItems()
     {
-        Item rocks = new Item("scavenger's-rocks","a key hangs from the pocket of the corpse");
-        Item key = new Item("key","a key hangs from the pocket of the corpse");
-        getCurrentRoom().getItems().addLast(rocks);
-        getCurrentRoom().getItems().addLast(key);
+
     }
 }

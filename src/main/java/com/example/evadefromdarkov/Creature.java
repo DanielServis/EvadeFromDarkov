@@ -26,7 +26,6 @@ public class Creature extends Enemy
     }
 
     public void dropItems(){
-        Item creatureCorpse = new Item("creature's-corpse","the shriveled husk of an overgrown man");
-        getCurrentRoom().getItems().add(creatureCorpse);
+
     }
 }

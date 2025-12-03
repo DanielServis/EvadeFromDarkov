@@ -11,7 +11,6 @@ public class Player implements Serializable {
     private int health;
     private ArrayList<Item> inventory;
     private Room currentRoom;
-    private Room heaven;
 
     public Player(String name, Room startingRoom, ArrayList<Item> inventory) {
         this.name = name;

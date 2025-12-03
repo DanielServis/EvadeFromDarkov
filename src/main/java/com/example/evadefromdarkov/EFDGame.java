@@ -20,18 +20,18 @@ public class EFDGame
     //Item creation
     Item map, coin;
     {
-        map = new Item("map","a tattered piece of paper etched with random drawings");
-        coin = new Item("coin","a rusted copper coin");
+        map = new Item("map","a tattered piece of paper etched with random drawings",0);
+        coin = new Item("coin","a rusted copper coin",1);
     }
     Weapon axe,shotgun;
     {
-        axe = new Weapon("axe","an old wood cutting axe",20);
-        shotgun = new Weapon("shotgun","a model 1912 winchester shotgun",40);
+        axe = new Weapon("axe","an old wood cutting axe",2,20);
+        shotgun = new Weapon("shotgun","a model 1912 winchester shotgun",3,40);
     }
     Tool dogfood, key;
     {
-        dogfood = new Tool("dogfood","a sealed tin of dog food",25);
-        key = new Tool("key","a shiny titanium key",1);
+        dogfood = new Tool("dogfood","a sealed tin of dog food",4,25);
+        key = new Tool("key","a shiny titanium key",5,1);
     }
 
     Room[][] tilesLayout = new Room[5][5];
@@ -46,7 +46,7 @@ public class EFDGame
 
     private void createWorld() {
         //Room creation
-        Room spawn,traderSpot,abandonedHouse,dogKennel,zone,bunker,wilderness1,wilderness2,wilderness3,wilderness4,minefield,wilderness6,wilderness7,wilderness8,wilderness9,wildernessA,wildernessB,wildernessC,wildernessD,wildernessE,wildernessG,wildernessH,wildernessI,scavengerCamp,wildernessK;
+        Room spawn,traderSpot,abandonedHouse,dogKennel,zone,bunker,oakTree,deadBushes,emptyField,smallForest,mineField,collapsedWell,mushrooms,smallPond,brownPuddle,abandonedTractor,deadSheep,deadCow,wheatField,shed,abandonedCar,dirtRoad,dogMeal,scavengerCamp,ashTree;
         {
             spawn = new Room(0,"your first memory of this place",new ArrayList<Item>());
             traderSpot = new Room(1,"an old man laying under a sheet of metal",new ArrayList<Item>());
@@ -54,36 +54,36 @@ public class EFDGame
             dogKennel = new Room(3,"a dog kennel",new ArrayList<Item>());
             zone = new Room(4,"a mysterious green glow",new ArrayList<Item>());
             bunker = new Room(5,"a locked 1970s fallout bunker",new ArrayList<Item>());
-            wilderness1 = new Room(6,"an old oak tree",new ArrayList<Item>());
-            wilderness2 = new Room(7,"a few dead bushes",new ArrayList<Item>());
-            wilderness3 = new Room(8,"a cold empty field",new ArrayList<Item>());
-            wilderness4 = new Room(9,"a small forest",new ArrayList<Item>());
-            minefield = new Room(10,"a sign saying minefield",new ArrayList<Item>());
-            wilderness6 = new Room(11,"a small collapsed well",new ArrayList<Item>());
-            wilderness7 = new Room(12,"a bed of mushrooms",new ArrayList<Item>());
-            wilderness8 = new Room(13,"a small pond",new ArrayList<Item>());
-            wilderness9 = new Room(14,"a puddle of brown water",new ArrayList<Item>());
-            wildernessA = new Room(15,"an abandoned tractor",new ArrayList<Item>());
-            wildernessB = new Room(16,"a dead sheep covered in flies",new ArrayList<Item>());
-            wildernessC = new Room(17,"a dead cow",new ArrayList<Item>());
-            wildernessD = new Room(18,"a field of rotten wheat",new ArrayList<Item>());
-            wildernessE = new Room(19,"a mysterious shed",new ArrayList<Item>());
-            wildernessG = new Room(20,"an abandoned car",new ArrayList<Item>());
-            wildernessH = new Room(21,"what is left of a dirt road",new ArrayList<Item>());
-            wildernessI = new Room(22,"the remainder of a dog's meal",new ArrayList<Item>());
+            oakTree = new Room(6,"an old oak tree",new ArrayList<Item>());
+            deadBushes = new Room(7,"a few dead bushes",new ArrayList<Item>());
+            emptyField = new Room(8,"a cold empty field",new ArrayList<Item>());
+            smallForest = new Room(9,"a small forest",new ArrayList<Item>());
+            mineField = new Room(10,"a sign saying minefield",new ArrayList<Item>());
+            collapsedWell = new Room(11,"a small collapsed well",new ArrayList<Item>());
+            mushrooms = new Room(12,"a bed of mushrooms",new ArrayList<Item>());
+            smallPond = new Room(13,"a small pond",new ArrayList<Item>());
+            brownPuddle = new Room(14,"a puddle of brown water",new ArrayList<Item>());
+            abandonedTractor = new Room(15,"an abandoned tractor",new ArrayList<Item>());
+            deadSheep = new Room(16,"a dead sheep covered in flies",new ArrayList<Item>());
+            deadCow = new Room(17,"a dead cow",new ArrayList<Item>());
+            wheatField = new Room(18,"a field of rotten wheat",new ArrayList<Item>());
+            shed = new Room(19,"a mysterious shed",new ArrayList<Item>());
+            abandonedCar = new Room(20,"an abandoned car",new ArrayList<Item>());
+            dirtRoad = new Room(21,"what is left of a dirt road",new ArrayList<Item>());
+            dogMeal = new Room(22,"the remainder of a dog's meal",new ArrayList<Item>());
             scavengerCamp = new Room(23,"a scavenger's camp",new ArrayList<Item>());
-            wildernessK = new Room(24,"a lone ash tree",new ArrayList<Item>());}
+            ashTree = new Room(24,"a lone ash tree",new ArrayList<Item>());}
         int[] xSpawn = new int[25];
         int[] ySpawn = new int[25];
 
         //Item allocation
         spawn.getItems().add(map);
-        wilderness1.getItems().add(axe);
-        wildernessI.getItems().add(dogfood);
-        wilderness6.getItems().add(coin);
+        oakTree.getItems().add(axe);
+        dogMeal.getItems().add(dogfood);
+        collapsedWell.getItems().add(coin);
         zone.getItems().add(shotgun);
 
-        Room[] roomChoices = {spawn, traderSpot, abandonedHouse, dogKennel, zone,bunker,wilderness1,wilderness2,wilderness3,wilderness4,minefield,wilderness6,wilderness7,wilderness8,wilderness9,wildernessA,wildernessB,wildernessC,wildernessD,wildernessE,wildernessG,wildernessH,wildernessI,scavengerCamp,wildernessK};
+        Room[] roomChoices = {spawn,traderSpot,abandonedHouse,dogKennel,zone,bunker,oakTree,deadBushes,emptyField,smallForest,mineField,collapsedWell,mushrooms,smallPond,brownPuddle,abandonedTractor,deadSheep,deadCow,wheatField,shed,abandonedCar,dirtRoad,dogMeal,scavengerCamp,ashTree};
 
         //Room placement
         for (int spawnOrder = 0; spawnOrder < xSpawn.length; spawnOrder++) {
@@ -119,7 +119,7 @@ public class EFDGame
         trader.getInventory().add(key);
         dog = new Dog("a rabid irradiated german shepperd",dogKennel,20,5);
         scavenger1 = new Scavenger("a tall sickly young man holding a knife",scavengerCamp,20,10,new ArrayList<Item>());
-        scavenger2 = new Scavenger("a short stumbling old man",scavengerCamp,30,10,new ArrayList<Item>());
+        scavenger2 = new Scavenger("a short stumbling old man",dirtRoad,30,10,new ArrayList<Item>());
         creature = new Creature("a large screaming irradiated beast",bunker,100,15);
     }
 
@@ -175,66 +175,16 @@ public class EFDGame
     }
 
     private void useItems(String itemName) {
-        int randDif = random.nextInt(20);
-
         switch (itemName){
             case "map":
                 outputStrings.add("looking at map");
                 GameState.MapLook.state = true;
                 break;
                 case "axe":
-                    switch(getCurrentEnemyNumber()) {
-                        case 0:
-                            trader.changeHealth(-(axe.getDamage()+randDif));
-                            outputStrings.add("trader chopped");
-                            break;
-                        case 1:
-                            dog.changeHealth(-(axe.getDamage()+randDif));
-                            outputStrings.add("dog chopped");
-                            break;
-                        case 2:
-                            scavenger1.changeHealth(-(axe.getDamage()+randDif));
-                            outputStrings.add("scav 1 chopped");
-                            break;
-                        case 3:
-                            scavenger2.changeHealth(-(axe.getDamage()+randDif));
-                            outputStrings.add("scav 2 chopped");
-                            break;
-                        case 4:
-                            creature.changeHealth(-(axe.getDamage()+randDif));
-                            outputStrings.add("creature chopped");
-                            break;
-                    }
+                    attackEnemy(axe);
                     break;
                     case "shotgun":
-                        switch(getCurrentEnemyNumber()){
-                            case 0:
-                                trader.changeHealth(-(shotgun.getDamage()+randDif));
-
-                                if (trader.getHealth() > 0){
-                                    outputStrings.add("trader shot");
-                                }else {
-                                    outputStrings.add("trader killed");
-                                    trader.dropItems();
-                                }
-                                break;
-                                case 1:
-                                    dog.changeHealth(-(shotgun.getDamage()+randDif));
-                                    outputStrings.add("dog shot");
-                                    break;
-                                    case 2:
-                                        scavenger1.changeHealth(-(shotgun.getDamage()+randDif));
-                                        outputStrings.add("scav 1 shot");
-                                        break;
-                                        case 3:
-                                            scavenger2.changeHealth(-(shotgun.getDamage()+randDif));
-                                            outputStrings.add("scav 2 shot");
-                                            break;
-                                            case 4:
-                                                creature.changeHealth(-(shotgun.getDamage()+randDif));
-                                                outputStrings.add("creature shot");
-                                                break;
-                        }
+                        attackEnemy(shotgun);
                         break;
                         case "dogfood":
                             if (getCurrentEnemyNumber() == 1){
@@ -245,13 +195,13 @@ public class EFDGame
                                 player.changeHealth(dogfood.getStat());
                                 outputStrings.add("dog food eaten");
                             }
-                            player.getInventory().remove(dogfood);
+                            player.getInventory().removeIf(item -> item.getId() == dogfood.getId());
                             break;
                             case "coin":
                                 if (getCurrentEnemyNumber() == 0){
                                     outputStrings.add("coin traded");
                                 }
-                                player.getInventory().remove(coin);
+                                player.getInventory().removeIf(item -> item.getId() == coin.getId());
                                 trader.getInventory().add(coin);
                                 player.getCurrentRoom().getItems().add(trader.getInventory().getFirst());
                                 break;
@@ -271,6 +221,57 @@ public class EFDGame
         }
     }
 
+    private void attackEnemy(Weapon weapon){
+        int randDif = random.nextInt(20);
+        switch(getCurrentEnemyNumber()){
+            case 0:
+                trader.changeHealth(-(weapon.getDamage()+randDif));
+                if (trader.getHealth() > 0){
+                    outputStrings.add("trader hit");
+                }else {
+                    outputStrings.add("trader killed");
+                    trader.dropItems();
+                }
+                break;
+            case 1:
+                dog.changeHealth(-(weapon.getDamage()+randDif));
+                if (dog.getHealth() > 0){
+                    outputStrings.add("dog hit");
+                }else {
+                    outputStrings.add("dog killed");
+                    dog.dropItems();
+                }
+                break;
+            case 2:
+                scavenger1.changeHealth(-(weapon.getDamage()+randDif));
+                if (scavenger1.getHealth() > 0){
+                    outputStrings.add("scavenger hit");
+                }else {
+                    outputStrings.add("scavenger killed");
+                    scavenger1.dropItems();
+                }
+                break;
+            case 3:
+                scavenger2.changeHealth(-(weapon.getDamage()+randDif));
+                if (scavenger2.getHealth() > 0){
+                    outputStrings.add("scavenger hit");
+                }else {
+                    outputStrings.add("scavenger killed");
+                    scavenger2.dropItems();
+                }
+                break;
+            case 4:
+                creature.changeHealth(-(weapon.getDamage()+randDif));
+                if (creature.getHealth() > 0){
+                    outputStrings.add("creature hit");
+                }else {
+                    outputStrings.add("creature killed");
+                    creature.dropItems();
+                }
+                break;
+        }
+    }
+
     public void processCommand(String command) {
         GameState.MapLook.state = false;
         if (GameState.Using.state) {
@@ -282,6 +283,7 @@ public class EFDGame
         } else {
             switch (command) {
                 case "north", "south", "west", "east":
+                    combatCheck();
                     goRoom(command);
                     break;
                 case "search":
@@ -420,53 +422,32 @@ public class EFDGame
     }
 
     public void saveGameFiles() {
-        saveData(tilesLayout,"tilesLayout.save");
-        saveData(player,"player.save");
-        saveData(dog,"dog.save");
-        saveData(trader,"trader.save");
-        saveData(scavenger1,"scav1.save");
-        saveData(scavenger2,"scav2.save");
-        saveData(creature,"creature.save");
+        GameSaver gameSaver = new GameSaver();
+        gameSaver.tilesLayout = this.tilesLayout;
+        gameSaver.player = this.player;
+        gameSaver.trader = this.trader;
+        gameSaver.dog = this.dog;
+        gameSaver.scavenger1 = this.scavenger1;
+        gameSaver.scavenger2 = this.scavenger2;
+        gameSaver.creature = this.creature;
+        saveData(gameSaver);
         outputStrings.add("game saved");
     }
 
     public void loadGameFiles(){
-        tilesLayout = loadData("tilesLayout.save");
-        player = loadData("player.save");
-        dog = loadData("dog.save");
-        trader = loadData("trader.save");
-        scavenger1 = loadData("scav1.save");
-        scavenger2 = loadData("scav2.save");
-        creature = loadData("creature.save");
-
+        GameSaver gameSaver = loadData();
+        this.tilesLayout = gameSaver.tilesLayout;
+        this.player = gameSaver.player;
+        this.trader = gameSaver.trader;
+        this.dog = gameSaver.dog;
+        this.scavenger1 = gameSaver.scavenger1;
+        this.scavenger2 = gameSaver.scavenger2;
+        this.creature = gameSaver.creature;
         outputStrings.add("game loaded");
-
-        //Relinkage of NPCs and Rooms
-        for (int x = 0; x < 5; x++){
-            for (int y = 0; y < 5; y++){
-                if (tilesLayout[x][y].getRoomNumber() == dog.currentRoomNumber){
-                    System.out.println("trying to link dog");
-                    dog.setCurrentRoom(tilesLayout[x][y]);
-                }
-                if (tilesLayout[x][y].getRoomNumber() == trader.currentRoomNumber){
-                    System.out.println("trying to link trader");
-                    trader.setCurrentRoom(tilesLayout[x][y]);
-                }
-                if (tilesLayout[x][y].getRoomNumber() == creature.currentRoomNumber){
-                    System.out.println("trying to link creature");
-                    creature.setCurrentRoom(tilesLayout[x][y]);
-                }
-                if (tilesLayout[x][y].getRoomNumber() == scavenger1.currentRoomNumber){
-                    System.out.println("trying to link scavs");
-                    scavenger1.setCurrentRoom(tilesLayout[x][y]);
-                    scavenger2.setCurrentRoom(tilesLayout[x][y]);
-                }
-            }
-        }
     }
 
-    private <T> void saveData(T obj, String file) {
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file))) {
+    private <T> void saveData(T obj) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("game.save"))) {
             out.writeObject(obj);
             System.out.println("Object has been serialized to saveData");
         } catch (IOException e) {
@@ -474,8 +455,8 @@ public class EFDGame
         }
     }
 
-    private <T> T loadData(String file) {
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
+    private <T> T loadData() {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("game.save"))) {
             return (T) in.readObject();
         } catch (Exception e) {
             e.printStackTrace();

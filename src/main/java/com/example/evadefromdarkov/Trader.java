@@ -2,7 +2,7 @@ package com.example.evadefromdarkov;
 
 import java.util.ArrayList;
 
-public class Trader extends Enemy implements Talkable {
+public class Trader extends Enemy {
     private ArrayList<Item> inventory;
     private ArrayList<String> dialog = new ArrayList<>();
 
