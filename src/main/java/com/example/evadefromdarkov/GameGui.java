@@ -385,7 +385,7 @@ public class GameGui extends Application {
                             trueY = 0;
                             break;
                     }
-                    mapGrid.add(mapIcons[Translator.getMap()[x][falseY].getRoomNumber()], x, trueY);
+                    mapGrid.add(mapIcons[Translator.getMap()[x][falseY].getID()], x, trueY);
                 }
             }
         }

@@ -144,7 +144,7 @@ public class EFDGame
     }
 
     private void revealSecretItem(){
-        if (player.getCurrentRoom().getRoomNumber() == 0) {
+        if (player.getCurrentRoom().getID() == 0) {
             player.getCurrentRoom().getItems().add(key);
             player.getCurrentRoom().getItems().add(shotgun);
             trader.getInventory().remove(key);
@@ -182,7 +182,7 @@ public class EFDGame
                 GameState.MapLook.state = true;
                 break;
                 case "axe":
-                    if (player.getCurrentRoom().getRoomNumber() == 2) {
+                    if (player.getCurrentRoom().getID() == 2) {
                         player.getCurrentRoom().getItems().add(shotgun);
                     }else {attackEnemy(axe);}
                     break;
@@ -198,19 +198,19 @@ public class EFDGame
                                 player.changeHealth(dogfood.getStat());
                                 outputStrings.add("dog food eaten");
                             }
-                            player.getInventory().removeIf(item -> item.getId() == dogfood.getId());
+                            player.getInventory().removeIf(item -> item.getID() == dogfood.getID());
                             break;
                             case "coin":
                                 if (getCurrentEnemyNumber() == 0){
                                     outputStrings.add("coin traded");
                                 }
-                                player.getInventory().removeIf(item -> item.getId() == coin.getId());
+                                player.getInventory().removeIf(item -> item.getID() == coin.getID());
                                 trader.getInventory().add(coin);
                                 player.getCurrentRoom().getItems().add(trader.getInventory().getFirst());
                                 break;
             case "key":
                 if (key.getStat() >= 0){
-                    if (player.getCurrentRoom().getRoomNumber() == 5){
+                    if (player.getCurrentRoom().getID() == 5){
                         outputStrings.add("bunker unlocked");
                         key.changeStat(-1);
                         if (key.getStat() <= 0){
@@ -371,7 +371,7 @@ public class EFDGame
     }
 
     public boolean escaped(){
-        if (player.getHealth() > 0 && creature.getHealth() <= 0 && player.getCurrentRoom().getRoomNumber() == 5) {
+        if (player.getHealth() > 0 && creature.getHealth() <= 0 && player.getCurrentRoom().getID() == 5) {
             outputStrings.add("you have escaped from darkov");
             GameState.Escaped.state = true;
             return true;
@@ -381,7 +381,7 @@ public class EFDGame
 
     public int getCurrentEnemyNumber(){
         GameState.Fighting.state = true;
-        if (player.getCurrentRoom().getRoomNumber() == 4 || player.getCurrentRoom().getRoomNumber() == 10) {
+        if (player.getCurrentRoom().getID() == 4 || player.getCurrentRoom().getID() == 10) {
             return 5;
         }
         if (player.getCurrentRoom() == creature.getCurrentRoom() && creature.getHealth() > 0 && creature.getReleased()) {

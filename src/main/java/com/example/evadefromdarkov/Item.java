@@ -43,7 +43,7 @@ public class Item implements Serializable, ID{
         this.location = location;
     }
 
-    public int getId() {
+    public int getID() {
         return id;
     }
 
@@ -57,10 +57,5 @@ public class Item implements Serializable, ID{
 
     public void setVisible(boolean visible) {
         isVisible = visible;
-    }
-
-    @Override
-    public int getID() {
-        return 0;
     }
 }
