@@ -21,8 +21,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.evadefromdarkov.Launcher.game;
-
 public class GameGui extends Application {
     @Override
     public void start(Stage stage) throws IOException
@@ -249,8 +247,8 @@ public class GameGui extends Application {
             for (Node nodes : allNodes) {
                 nodes.setStyle("-fx-background-color: transparent;");
                 nodes.setOnMouseClicked((event) -> {
-                    if (!GameState.Dead.state && !game.escaped()) {
-                        game.combatCheck();
+                    if (!GameState.Dead.state && !Translator.escaped()) {
+                        Translator.combatCheck();
                     }
                     displayTextOutput(textBox,healthBox);
                     displayVisualOutput(inventoryGrid,itemButtons,enemyImage,enemyImageFiles,itemFiles,mapGrid,mapIcons);
@@ -280,8 +278,8 @@ public class GameGui extends Application {
                 button.setOnAction(event -> {
                     buttonPressedDown(button);
 
-                    if (!game.escaped() && !GameState.Dead.state) {
-                        game.processCommand(text);
+                    if (!Translator.escaped() && !GameState.Dead.state) {
+                        Translator.processCommand(text);
                     }
                 });
             });
@@ -327,14 +325,14 @@ public class GameGui extends Application {
 
     private void displayTextOutput(TextArea textBox,TextArea healthBox) {
         textBox.clear();
-        for (String string : game.getOutput()) {
+        for (String string : Translator.getOutput()) {
             textBox.appendText(string + "\n");
         }
 
         healthBox.clear();
 
-        if (game.getPlayerHealth() >= 0){
-            healthBox.setPromptText(String.valueOf(game.getPlayerHealth()));
+        if (Translator.getPlayerHealth() >= 0){
+            healthBox.setPromptText(String.valueOf(Translator.getPlayerHealth()));
         }
         else {healthBox.setPromptText(String.valueOf(0));}
     }
@@ -344,27 +342,27 @@ public class GameGui extends Application {
         mapGrid.getChildren().clear();
         enemyImage.setImage(null);
 
-        if (game.getInventory().contains("map")){
+        if (Translator.getInventory().contains("map")){
             inventoryGrid.add(itemButtons[0],0,0);
         }
-        if (game.getInventory().contains("axe")){
+        if (Translator.getInventory().contains("axe")){
             inventoryGrid.add(itemButtons[1],1,0);
         }
-        if (game.getInventory().contains("shotgun")){
+        if (Translator.getInventory().contains("shotgun")){
             inventoryGrid.add(itemButtons[2],0,1);
         }
-        if (game.getInventory().contains("coin")){
+        if (Translator.getInventory().contains("coin")){
             inventoryGrid.add(itemButtons[3],1,1);
         }
-        if (game.getInventory().contains("dogfood")){
+        if (Translator.getInventory().contains("dogfood")){
             inventoryGrid.add(itemButtons[4],0,2);
         }
-        if (game.getInventory().contains("key")){
+        if (Translator.getInventory().contains("key")){
             inventoryGrid.add(itemButtons[5],1,2);
         }
 
-        if (!GameState.MapLook.state && game.getCurrentEnemyNumber() >= 0 && game.getCurrentEnemyNumber() <= 4){
-            enemyImage.setImage(new Image(enemyFiles[game.getCurrentEnemyNumber()].toURI().toString()));
+        if (!GameState.MapLook.state && Translator.getCurrentEnemyNumber() >= 0 && Translator.getCurrentEnemyNumber() <= 4){
+            enemyImage.setImage(new Image(enemyFiles[Translator.getCurrentEnemyNumber()].toURI().toString()));
         }
         else if (GameState.MapLook.state){
             for (int falseY = 0; falseY < 5; falseY++) {
@@ -387,7 +385,7 @@ public class GameGui extends Application {
                             trueY = 0;
                             break;
                     }
-                    mapGrid.add(mapIcons[game.getMap()[x][falseY].getRoomNumber()], x, trueY);
+                    mapGrid.add(mapIcons[Translator.getMap()[x][falseY].getRoomNumber()], x, trueY);
                 }
             }
         }
