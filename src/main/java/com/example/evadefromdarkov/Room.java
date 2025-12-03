@@ -39,6 +39,10 @@ public class Room implements Serializable {
         return items;
     }
 
+    public int getDamage(){
+        return 0;
+    }
+
     public void setExit(String direction, Room neighbor) {
         exits.put(direction, neighbor);
     }

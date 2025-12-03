@@ -46,19 +46,17 @@ public class EFDGame
 
     private void createWorld() {
         //Room creation
-        Room spawn,traderSpot,abandonedHouse,dogKennel,zone,bunker,oakTree,deadBushes,emptyField,smallForest,mineField,collapsedWell,mushrooms,smallPond,brownPuddle,abandonedTractor,deadSheep,deadCow,wheatField,shed,abandonedCar,dirtRoad,dogMeal,scavengerCamp,ashTree;
+        Room spawn,traderSpot,abandonedHouse,dogKennel,bunker,oakTree,deadBushes,emptyField,smallForest,collapsedWell,mushrooms,smallPond,brownPuddle,abandonedTractor,deadSheep,deadCow,wheatField,shed,abandonedCar,dirtRoad,dogMeal,scavengerCamp,ashTree;
         {
             spawn = new Room(0,"your first memory of this place",new ArrayList<Item>());
             traderSpot = new Room(1,"an old man laying under a sheet of metal",new ArrayList<Item>());
             abandonedHouse = new Room(2,"an old abandoned and barricaded house",new ArrayList<Item>());
             dogKennel = new Room(3,"a dog kennel",new ArrayList<Item>());
-            zone = new Room(4,"a mysterious green glow",new ArrayList<Item>());
             bunker = new Room(5,"a locked 1970s fallout bunker",new ArrayList<Item>());
             oakTree = new Room(6,"an old oak tree",new ArrayList<Item>());
             deadBushes = new Room(7,"a few dead bushes",new ArrayList<Item>());
             emptyField = new Room(8,"a cold empty field",new ArrayList<Item>());
             smallForest = new Room(9,"a small forest",new ArrayList<Item>());
-            mineField = new Room(10,"a sign saying minefield",new ArrayList<Item>());
             collapsedWell = new Room(11,"a small collapsed well",new ArrayList<Item>());
             mushrooms = new Room(12,"a bed of mushrooms",new ArrayList<Item>());
             smallPond = new Room(13,"a small pond",new ArrayList<Item>());
@@ -73,6 +71,9 @@ public class EFDGame
             dogMeal = new Room(22,"the remainder of a dog's meal",new ArrayList<Item>());
             scavengerCamp = new Room(23,"a scavenger's camp",new ArrayList<Item>());
             ashTree = new Room(24,"a lone ash tree",new ArrayList<Item>());}
+        DangerRoom zone, mineField;
+        {zone = new DangerRoom(4,"a mysterious green glow",5,new ArrayList<Item>());
+            mineField = new DangerRoom(10,"a sign saying minefield",10,new ArrayList<Item>());}
         int[] xSpawn = new int[25];
         int[] ySpawn = new int[25];
 
@@ -181,7 +182,9 @@ public class EFDGame
                 GameState.MapLook.state = true;
                 break;
                 case "axe":
-                    attackEnemy(axe);
+                    if (player.getCurrentRoom().getRoomNumber() == 2) {
+                        player.getCurrentRoom().getItems().add(shotgun);
+                    }else {attackEnemy(axe);}
                     break;
                     case "shotgun":
                         attackEnemy(shotgun);
@@ -282,9 +285,18 @@ public class EFDGame
             GameState.Dropping.state = false;
         } else {
             switch (command) {
+                case "save":
+                    saveGameFiles();
+                    break;
+                    case "load":
+                        loadGameFiles();
                 case "north", "south", "west", "east":
                     combatCheck();
                     goRoom(command);
+                    break;
+                case "compass":
+                    outputStrings.add(player.getCurrentRoom().getDescription());
+                    GameState.Fighting.state = false;
                     break;
                 case "search":
                     printItems();
@@ -348,6 +360,8 @@ public class EFDGame
             else if (getCurrentEnemyNumber() == 4 && creature.getHealth() > 0 && creature.getReleased()){
                 player.changeHealth(-(creature.getDamage()+randDif));
             }
+
+            player.changeHealth(-player.getCurrentRoom().getDamage());
         }
         else if (player.getHealth() <= 0)
         {
@@ -399,10 +413,6 @@ public class EFDGame
         return player.getHealth();
     }
 
-    public void getPosition(){
-        outputStrings.addLast(player.getCurrentRoom().getLongDescription());
-    }
-
     public ArrayList<String> getInventory(){
         ArrayList<String> inventory = new ArrayList<>();
 
@@ -413,15 +423,11 @@ public class EFDGame
         return inventory;
     }
 
-    public boolean getMapState(){
-        return GameState.MapLook.state;
-    }
-
     public Room[][] getMap() {
         return tilesLayout;
     }
 
-    public void saveGameFiles() {
+    private void saveGameFiles() {
         GameSaver gameSaver = new GameSaver();
         gameSaver.tilesLayout = this.tilesLayout;
         gameSaver.player = this.player;
@@ -434,7 +440,7 @@ public class EFDGame
         outputStrings.add("game saved");
     }
 
-    public void loadGameFiles(){
+    private void loadGameFiles(){
         GameSaver gameSaver = loadData();
         this.tilesLayout = gameSaver.tilesLayout;
         this.player = gameSaver.player;

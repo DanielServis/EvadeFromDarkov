@@ -283,21 +283,6 @@ public class GameGui extends Application {
                     if (!game.escaped() && !GameState.Dead.state) {
                         game.processCommand(text);
                     }
-
-                    switch(text){
-                        case "save":
-                            game.saveGameFiles();
-                            GameState.Fighting.state = false;
-                            break;
-                            case "load":
-                                game.loadGameFiles();
-                                GameState.Fighting.state = false;
-                                break;
-                            case "compass":
-                                game.getPosition();
-                                GameState.Fighting.state = false;
-                                break;
-                    }
                 });
             });
         }
@@ -378,10 +363,10 @@ public class GameGui extends Application {
             inventoryGrid.add(itemButtons[5],1,2);
         }
 
-        if (!game.getMapState() && game.getCurrentEnemyNumber() != -1){
+        if (!GameState.MapLook.state && game.getCurrentEnemyNumber() != -1){
             enemyImage.setImage(new Image(enemyFiles[game.getCurrentEnemyNumber()].toURI().toString()));
         }
-        else if (game.getMapState()){
+        else if (GameState.MapLook.state){
             for (int falseY = 0; falseY < 5; falseY++) {
                 for (int x = 0; x < 5; x++) {
                     int trueY = 0;
