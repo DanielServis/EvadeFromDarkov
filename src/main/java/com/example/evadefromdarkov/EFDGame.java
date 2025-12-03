@@ -360,8 +360,9 @@ public class EFDGame
             else if (getCurrentEnemyNumber() == 4 && creature.getHealth() > 0 && creature.getReleased()){
                 player.changeHealth(-(creature.getDamage()+randDif));
             }
-
-            player.changeHealth(-player.getCurrentRoom().getDamage());
+            else if (getCurrentEnemyNumber() >= 5){
+                player.changeHealth(-player.getCurrentRoom().getDamage());
+            }
         }
         else if (player.getHealth() <= 0)
         {
@@ -380,6 +381,9 @@ public class EFDGame
 
     public int getCurrentEnemyNumber(){
         GameState.Fighting.state = true;
+        if (player.getCurrentRoom().getRoomNumber() == 4 || player.getCurrentRoom().getRoomNumber() == 10) {
+            return 5;
+        }
         if (player.getCurrentRoom() == creature.getCurrentRoom() && creature.getHealth() > 0 && creature.getReleased()) {
             return 4;
         }

@@ -363,7 +363,7 @@ public class GameGui extends Application {
             inventoryGrid.add(itemButtons[5],1,2);
         }
 
-        if (!GameState.MapLook.state && game.getCurrentEnemyNumber() != -1){
+        if (!GameState.MapLook.state && game.getCurrentEnemyNumber() >= 0 && game.getCurrentEnemyNumber() <= 4){
             enemyImage.setImage(new Image(enemyFiles[game.getCurrentEnemyNumber()].toURI().toString()));
         }
         else if (GameState.MapLook.state){
