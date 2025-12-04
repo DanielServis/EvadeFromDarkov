@@ -46,13 +46,12 @@ public class EFDGame
 
     private void createWorld() {
         //Room creation
-        Room spawn,traderSpot,abandonedHouse,dogKennel,bunker,oakTree,deadBushes,emptyField,smallForest,collapsedWell,mushrooms,smallPond,brownPuddle,abandonedTractor,deadSheep,deadCow,wheatField,shed,abandonedCar,dirtRoad,dogMeal,scavengerCamp,ashTree;
+        Room spawn,traderSpot,abandonedHouse,dogKennel,oakTree,deadBushes,emptyField,smallForest,collapsedWell,mushrooms,smallPond,brownPuddle,abandonedTractor,deadSheep,deadCow,wheatField,shed,abandonedCar,dirtRoad,dogMeal,scavengerCamp,ashTree;
         {
             spawn = new Room(0,"your first memory of this place",new ArrayList<Item>());
             traderSpot = new Room(1,"an old man laying under a sheet of metal",new ArrayList<Item>());
             abandonedHouse = new Room(2,"an old abandoned and barricaded house",new ArrayList<Item>());
             dogKennel = new Room(3,"a dog kennel",new ArrayList<Item>());
-            bunker = new Room(5,"a locked 1970s fallout bunker",new ArrayList<Item>());
             oakTree = new Room(6,"an old oak tree",new ArrayList<Item>());
             deadBushes = new Room(7,"a few dead bushes",new ArrayList<Item>());
             emptyField = new Room(8,"a cold empty field",new ArrayList<Item>());
@@ -71,6 +70,10 @@ public class EFDGame
             dogMeal = new Room(22,"the remainder of a dog's meal",new ArrayList<Item>());
             scavengerCamp = new Room(23,"a scavenger's camp",new ArrayList<Item>());
             ashTree = new Room(24,"a lone ash tree",new ArrayList<Item>());}
+        StorageRoom bunker;
+        {
+            bunker = new StorageRoom(5,"a locked 1970s fallout bunker",new ArrayList<Item>());
+        }
         DangerRoom zone, mineField;
         {zone = new DangerRoom(4,"a mysterious green glow",5,new ArrayList<Item>());
             mineField = new DangerRoom(10,"a sign saying minefield",10,new ArrayList<Item>());}
@@ -121,7 +124,8 @@ public class EFDGame
         dog = new Dog("a rabid irradiated german shepperd",dogKennel,20,5);
         scavenger1 = new Scavenger("a tall sickly young man holding a knife",scavengerCamp,20,10,new ArrayList<Item>());
         scavenger2 = new Scavenger("a short stumbling old man",dirtRoad,30,10,new ArrayList<Item>());
-        creature = new Creature("a large screaming irradiated beast",bunker,100,15);
+        creature = new Creature("a large screaming irradiated beast",null,100,15);
+        bunker.addEnemy(creature);
     }
 
     private void goRoom(String direction) {
@@ -183,6 +187,7 @@ public class EFDGame
                 break;
                 case "axe":
                     if (player.getCurrentRoom().getID() == 2) {
+                        outputStrings.add("barricades removed");
                         player.getCurrentRoom().getItems().add(shotgun);
                     }else {attackEnemy(axe);}
                     break;
@@ -216,7 +221,10 @@ public class EFDGame
                         if (key.getStat() <= 0){
                             player.getInventory().remove(key);
                         }
-                        creature.setReleased(true);
+                        if (((StorageRoom<Enemy>) player.getCurrentRoom()).getEnemy().equals(creature)){
+                            creature.setReleased(true);
+                            ((StorageRoom<Enemy>) player.getCurrentRoom()).removeEnemy(creature);
+                        }
                     }
                 }
                 else {outputStrings.add("key broken");}
@@ -277,11 +285,18 @@ public class EFDGame
 
     public void processCommand(String command) {
         GameState.MapLook.state = false;
-        if (GameState.Using.state) {
+
+        if (creature.getReleased() && !GameState.Dropping.state && !GameState.Using.state) {
+            creature.move(player.getCurrentRoom());
+        }
+
+        if (GameState.Using.state && command != "use") {
             useItems(command);
+            combatCheck();
             GameState.Using.state = false;
-        } else if (GameState.Dropping.state) {
+        } else if (GameState.Dropping.state && command != "drop") {
             dropItems(command);
+            combatCheck();
             GameState.Dropping.state = false;
         } else {
             switch (command) {
@@ -296,26 +311,27 @@ public class EFDGame
                     break;
                 case "compass":
                     outputStrings.add(player.getCurrentRoom().getDescription());
-                    GameState.Fighting.state = false;
                     break;
                 case "search":
                     printItems();
                     if (secretSuccessiveSearches == secretSuccessiveSearchRequirement){
                         revealSecretItem();
                     }
+                    combatCheck();
                     break;
                 case "grab":
                     grabItems();
+                    combatCheck();
                     break;
                 case "drop":
                     outputStrings.add("drop what?");
+                    GameState.Using.state = false;
                     GameState.Dropping.state = true;
-                    GameState.Fighting.state = false;
                     break;
                 case "use":
                     outputStrings.add("use what?");
+                    GameState.Dropping.state = false;
                     GameState.Using.state = true;
-                    GameState.Fighting.state = false;
                     break;
                 case "map":
                     outputStrings.add(map.getDescription());
@@ -360,7 +376,7 @@ public class EFDGame
             else if (getCurrentEnemyNumber() == 4 && creature.getHealth() > 0 && creature.getReleased()){
                 player.changeHealth(-(creature.getDamage()+randDif));
             }
-            else if (getCurrentEnemyNumber() >= 5){
+            else if (getCurrentEnemyNumber() == 5){
                 player.changeHealth(-player.getCurrentRoom().getDamage());
             }
         }
@@ -382,6 +398,7 @@ public class EFDGame
     public int getCurrentEnemyNumber(){
         GameState.Fighting.state = true;
         if (player.getCurrentRoom().getID() == 4 || player.getCurrentRoom().getID() == 10) {
+            System.out.println("Room damage");
             return 5;
         }
         if (player.getCurrentRoom() == creature.getCurrentRoom() && creature.getHealth() > 0 && creature.getReleased()) {

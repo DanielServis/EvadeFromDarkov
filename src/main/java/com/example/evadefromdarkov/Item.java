@@ -43,11 +43,13 @@ public class Item implements Serializable, ID{
         this.location = location;
     }
 
+    @Override
     public int getID() {
         return id;
     }
 
-    public void setId(int id) {
+    @Override
+    public void setID(int id) {
         this.id = id;
     }
 

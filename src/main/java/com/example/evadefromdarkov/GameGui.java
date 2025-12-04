@@ -247,9 +247,6 @@ public class GameGui extends Application {
             for (Node nodes : allNodes) {
                 nodes.setStyle("-fx-background-color: transparent;");
                 nodes.setOnMouseClicked((event) -> {
-                    if (!GameState.Dead.state && !Translator.escaped()) {
-                        Translator.combatCheck();
-                    }
                     displayTextOutput(textBox,healthBox);
                     displayVisualOutput(inventoryGrid,itemButtons,enemyImage,enemyImageFiles,itemFiles,mapGrid,mapIcons);
                 });

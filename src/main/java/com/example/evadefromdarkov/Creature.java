@@ -4,17 +4,21 @@ import java.io.Serializable;
 
 public class Creature extends Enemy
 {
-    boolean released;
+    private boolean released;
+    private int cooldown = 2;
 
     public Creature(String description, Room room, int health, int damage){
         super(description,room,health,damage);
         this.released = false;
     }
 
-    public void move(){
-        if (released){
-            //creature makes a move
+    public void move(Room room){
+        cooldown--;
+        if (cooldown <= 0){
+            this.currentRoom = room;
+            cooldown = 5;
         }
+        System.out.println(cooldown);
     }
 
     public boolean getReleased(){

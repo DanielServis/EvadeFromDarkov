@@ -14,12 +14,6 @@ public class Room implements Serializable, ID{
     private ArrayList<Item> items;
     private Map<String, Room> exits; // Map direction to neighboring Room
 
-    public Room(int id,String description) {
-        this.id = id;
-        this.description = description;
-        exits = new HashMap<>();
-    }
-
     public Room(int id,String description, ArrayList<Item> items) {
         this.id = id;
         this.description = description;
@@ -62,5 +56,10 @@ public class Room implements Serializable, ID{
     @Override
     public int getID() {
         return id;
+    }
+
+    @Override
+    public void setID(int id) {
+        this.id = id;
     }
 }

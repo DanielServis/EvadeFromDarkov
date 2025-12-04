@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import static com.example.evadefromdarkov.Launcher.game;
 
 public class Translator {
-    public static void combatCheck() {
-        game.combatCheck();
-    }
-
     public static int getCurrentEnemyNumber(){
         return game.getCurrentEnemyNumber();
     }
