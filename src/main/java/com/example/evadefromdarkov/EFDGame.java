@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("unchecked"+"redundant")
 public class EFDGame
 {
     Random random = new Random();
