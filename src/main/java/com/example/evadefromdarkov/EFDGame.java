@@ -4,9 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+@SuppressWarnings("unchecked")
 public class EFDGame
 {
-    File AllText = new File("com/example/evadefromdarkov/AllText.json");
     Random random = new Random();
 
     //Player and NPC creation

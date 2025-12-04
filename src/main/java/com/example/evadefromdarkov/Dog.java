@@ -1,7 +1,5 @@
 package com.example.evadefromdarkov;
 
-import java.io.Serializable;
-
 public class Dog extends Enemy {
     private boolean tame;
 
