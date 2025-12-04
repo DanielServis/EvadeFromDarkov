@@ -7,3 +7,8 @@ Gameplay Hits:
 1. the old man likes shiny things
 2. the axe has many uses
 3. those old bunker tunnels might lead out of the zone
+
+To Run The Game:
+1. Unzip the folder
+2. Navigate to the jar file
+3. java -jar EvadeFromDarkov.jar
