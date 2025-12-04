@@ -25,88 +25,88 @@ public class GameGui extends Application {
     @Override
     public void start(Stage stage) throws IOException
     {
-        File saveFile, northFile, southFile, westFile, eastFile, compassFile, searchFile, grabFile, dropFile, useFile,mapFile,axeFile,shotgunFile,coinFile,dogfoodFile,keyFile,playerFile,traderFile,houndFile,scavengerFile,creatureFile,spawnFile,bunkerFile,boneFile,campFile,houseFile,sheetFile,wildFile;
+        Image saveFile, northFile, southFile, westFile, eastFile, compassFile, searchFile, grabFile, dropFile, useFile,mapFile,axeFile,shotgunFile,coinFile,dogfoodFile,keyFile,playerFile,traderFile,houndFile,scavengerFile,creatureFile,spawnFile,bunkerFile,boneFile,campFile,houseFile,sheetFile,wildFile;
         {
-            saveFile = new File("src/images/saveButton.png");
-            northFile = new File("src/images/northButton.png");
-            southFile = new File("src/images/southButton.png");
-            westFile = new File("src/images/westButton.png");
-            eastFile = new File("src/images/eastButton.png");
-            compassFile = new File("src/images/compassButton.png");
-            searchFile = new File("src/images/searchButton.png");
-            grabFile = new File("src/images/grabButton.png");
-            dropFile = new File("src/images/dropButton.png");
-            useFile = new File("src/images/useButton.png");
-            mapFile = new File("src/images/mapImage.png");
-            axeFile = new File("src/images/axeImage.png");
-            shotgunFile = new File("src/images/shotgunImage.png");
-            coinFile = new File("src/images/coinImage.png");
-            dogfoodFile = new File("src/images/dogfoodImage.png");
-            keyFile = new File("src/images/keyImage.png");
-            playerFile = new File("src/images/playerImage.png");
-            traderFile = new File("src/images/traderImage.png");
-            houndFile = new File("src/images/houndImage.png");
-            scavengerFile = new File ("src/images/scavengerImage.png");
-            creatureFile = new File("src/images/creatureImage.png");
-            spawnFile = new File("src/images/spawnImage.png");
-            bunkerFile = new File("src/images/bunkerImage.png");
-            boneFile = new File("src/images/boneImage.png");
-            campFile = new File("src/images/campImage.png");
-            houseFile = new File("src/images/houseImage.png");
-            sheetFile = new File("src/images/sheetImage.png");
-            wildFile = new File("src/images/treeImage.png");
+            saveFile = new Image(getClass().getResourceAsStream("/images/saveButton.png"));
+            northFile = new Image(getClass().getResourceAsStream("/images/northButton.png"));
+            southFile = new Image(getClass().getResourceAsStream("/images/southButton.png"));
+            westFile = new Image(getClass().getResourceAsStream("/images/westButton.png"));
+            eastFile = new Image(getClass().getResourceAsStream("/images/eastButton.png"));
+            compassFile = new Image(getClass().getResourceAsStream("/images/compassButton.png"));
+            searchFile = new Image(getClass().getResourceAsStream("/images/searchButton.png"));
+            grabFile = new Image(getClass().getResourceAsStream("/images/grabButton.png"));
+            dropFile = new Image(getClass().getResourceAsStream("/images/dropButton.png"));
+            useFile = new Image(getClass().getResourceAsStream("/images/useButton.png"));
+            mapFile = new Image(getClass().getResourceAsStream("/images/mapImage.png"));
+            axeFile = new Image(getClass().getResourceAsStream("/images/axeImage.png"));
+            shotgunFile = new Image(getClass().getResourceAsStream("/images/shotgunImage.png"));
+            coinFile = new Image(getClass().getResourceAsStream("/images/coinImage.png"));
+            dogfoodFile = new Image(getClass().getResourceAsStream("/images/dogfoodImage.png"));
+            keyFile = new Image(getClass().getResourceAsStream("/images/keyImage.png"));
+            playerFile = new Image(getClass().getResourceAsStream("/images/playerImage.png"));
+            traderFile = new Image(getClass().getResourceAsStream("/images/traderImage.png"));
+            houndFile = new Image(getClass().getResourceAsStream("/images/houndImage.png"));
+            scavengerFile = new Image(getClass().getResourceAsStream("/images/scavengerImage.png"));
+            creatureFile = new Image(getClass().getResourceAsStream("/images/creatureImage.png"));
+            spawnFile = new Image(getClass().getResourceAsStream("/images/spawnImage.png"));
+            bunkerFile = new Image(getClass().getResourceAsStream("/images/bunkerImage.png"));
+            boneFile = new Image(getClass().getResourceAsStream("/images/boneImage.png"));
+            campFile = new Image(getClass().getResourceAsStream("/images/campImage.png"));
+            houseFile = new Image(getClass().getResourceAsStream("/images/houseImage.png"));
+            sheetFile = new Image(getClass().getResourceAsStream("/images/sheetImage.png"));
+            wildFile = new Image(getClass().getResourceAsStream("/images/treeImage.png"));
         }
         ImageView saveImage,loadImage,northImage,southImage,westImage,eastImage,compassImage,searchImage,grabImage,dropImage,useImage,mapImage,axeImage,shotgunImage,coinImage,dogfoodImage,keyImage,playerImage,enemyImage,spawnImage,bunkerImage,boneImage,campImage,houseImage,sheetImage;
         {
-            saveImage = new ImageView(new Image(saveFile.toURI().toString()));
-            loadImage = new ImageView(new Image(saveFile.toURI().toString()));
-            northImage = new ImageView(new Image(northFile.toURI().toString()));
-            southImage = new ImageView(new Image(southFile.toURI().toString()));
-            westImage = new ImageView(new Image(westFile.toURI().toString()));
-            eastImage = new ImageView(new Image(eastFile.toURI().toString()));
-            compassImage = new ImageView(new Image(compassFile.toURI().toString()));
-            searchImage = new ImageView(new Image(searchFile.toURI().toString()));
-            grabImage = new ImageView(new Image(grabFile.toURI().toString()));
-            dropImage = new ImageView(new Image(dropFile.toURI().toString()));
-            useImage = new ImageView(new Image(useFile.toURI().toString()));
-            mapImage = new ImageView(new Image(mapFile.toURI().toString()));
-            axeImage = new ImageView(new Image(axeFile.toURI().toString()));
-            shotgunImage = new ImageView(new Image(shotgunFile.toURI().toString()));
-            coinImage = new ImageView(new Image(coinFile.toURI().toString()));
-            dogfoodImage = new ImageView(new Image(dogfoodFile.toURI().toString()));
-            keyImage = new  ImageView(new Image(keyFile.toURI().toString()));
-            playerImage = new ImageView(new Image(playerFile.toURI().toString()));
+            saveImage = new ImageView(saveFile);
+            loadImage = new ImageView(saveFile);
+            northImage = new ImageView(northFile);
+            southImage = new ImageView(southFile);
+            westImage = new ImageView(westFile);
+            eastImage = new ImageView(eastFile);
+            compassImage = new ImageView(compassFile);
+            searchImage = new ImageView(searchFile);
+            grabImage = new ImageView(grabFile);
+            dropImage = new ImageView(dropFile);
+            useImage = new ImageView(useFile);
+            mapImage = new ImageView(mapFile);
+            axeImage = new ImageView(axeFile);
+            shotgunImage = new ImageView(shotgunFile);
+            coinImage = new ImageView(coinFile);
+            dogfoodImage = new ImageView(dogfoodFile);
+            keyImage = new  ImageView(keyFile);
+            playerImage = new ImageView(playerFile);
             enemyImage = new ImageView();
-            spawnImage = new ImageView(new Image(spawnFile.toURI().toString()));
-            bunkerImage = new ImageView(new Image(bunkerFile.toURI().toString()));
-            boneImage = new ImageView(new Image(boneFile.toURI().toString()));
-            campImage = new ImageView(new Image(campFile.toURI().toString()));
-            houseImage = new ImageView(new Image(houseFile.toURI().toString()));
-            sheetImage = new ImageView(new Image(sheetFile.toURI().toString()));
+            spawnImage = new ImageView(spawnFile);
+            bunkerImage = new ImageView(bunkerFile);
+            boneImage = new ImageView(boneFile);
+            campImage = new ImageView(campFile);
+            houseImage = new ImageView(houseFile);
+            sheetImage = new ImageView(sheetFile);
         }
         ImageView wildImage1, wildImage2, wildImage3, wildImage4, wildImage5, wildImage6, wildImage7, wildImage8, wildImage9, wildImage10, wildImage11,wildImage12,wildImage13,wildImage14,wildImage15,wildImage16,wildImage17,wildImage18,wildImage19,wildImage20,wildImage21;
         {
-            wildImage1 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage2 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage3 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage4 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage5 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage6 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage7 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage8 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage9 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage10 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage11 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage12 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage13 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage14 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage15 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage16 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage17 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage18 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage19 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage20 = new ImageView(new Image(wildFile.toURI().toString()));
-            wildImage21 = new ImageView(new Image(wildFile.toURI().toString()));
+            wildImage1 = new ImageView(wildFile);
+            wildImage2 = new ImageView(wildFile);
+            wildImage3 = new ImageView(wildFile);
+            wildImage4 = new ImageView(wildFile);
+            wildImage5 = new ImageView(wildFile);
+            wildImage6 = new ImageView(wildFile);
+            wildImage7 = new ImageView(wildFile);
+            wildImage8 = new ImageView(wildFile);
+            wildImage9 = new ImageView(wildFile);
+            wildImage10 = new ImageView(wildFile);
+            wildImage11 = new ImageView(wildFile);
+            wildImage12 = new ImageView(wildFile);
+            wildImage13 = new ImageView(wildFile);
+            wildImage14 = new ImageView(wildFile);
+            wildImage15 = new ImageView(wildFile);
+            wildImage16 = new ImageView(wildFile);
+            wildImage17 = new ImageView(wildFile);
+            wildImage18 = new ImageView(wildFile);
+            wildImage19 = new ImageView(wildFile);
+            wildImage20 = new ImageView(wildFile);
+            wildImage21 = new ImageView(wildFile);
         }
         ImageView[] wildViews = {wildImage1, wildImage2, wildImage3, wildImage4, wildImage5, wildImage6, wildImage7, wildImage8, wildImage9, wildImage10, wildImage11,wildImage12,wildImage13,wildImage14,wildImage15,wildImage16,wildImage17,wildImage18,wildImage19,wildImage20,wildImage21};
         Button saveButton, loadButton, northButton, southButton, westButton, eastButton, compassButton, searchButton, grabButton, dropButton, useButton,mapButton,axeButton,coinButton,dogfoodButton,shotgunButton,keyButton;
@@ -241,8 +241,8 @@ public class GameGui extends Application {
             Node[] allNodes = {textBox,healthBox,mapGrid,inventoryGrid,buttonGridBL,buttonGridBR,saveButton,loadButton,compassButton,northButton,southButton,westButton,eastButton,searchButton,grabButton,dropButton,useButton,mapButton,axeButton,shotgunButton,coinButton,dogfoodButton,keyButton,playerImage,enemyImage};
             Button[] itemButtons = {mapButton,axeButton,shotgunButton,coinButton,dogfoodButton,keyButton};
             ImageView[] mapIcons = {spawnImage,sheetImage,houseImage,boneImage,wildImage2, bunkerImage, wildImage3, wildImage4, wildImage5, wildImage6, wildImage7, wildImage8, wildImage9, wildImage10, wildImage11,wildImage12,wildImage13,wildImage14,wildImage15,wildImage16,wildImage17,wildImage18,wildImage19,campImage,wildImage21};
-            File[] itemFiles = {mapFile, axeFile, shotgunFile, coinFile, dogfoodFile};
-            File[] enemyImageFiles = {traderFile,houndFile,scavengerFile,scavengerFile,creatureFile};
+            Image[] itemFiles = {mapFile, axeFile, shotgunFile, coinFile, dogfoodFile};
+            Image[] enemyImageFiles = {traderFile,houndFile,scavengerFile,scavengerFile,creatureFile};
 
             for (Node nodes : allNodes) {
                 nodes.setStyle("-fx-background-color: transparent;");
@@ -334,7 +334,7 @@ public class GameGui extends Application {
         else {healthBox.setPromptText(String.valueOf(0));}
     }
 
-    private void displayVisualOutput(GridPane inventoryGrid, Button[] itemButtons, ImageView enemyImage, File[] enemyFiles, File[] itemFiles, GridPane mapGrid, ImageView[] mapIcons) {
+    private void displayVisualOutput(GridPane inventoryGrid, Button[] itemButtons, ImageView enemyImage, Image[] enemyFiles, Image[] itemFiles, GridPane mapGrid, ImageView[] mapIcons) {
         inventoryGrid.getChildren().clear();
         mapGrid.getChildren().clear();
         enemyImage.setImage(null);
@@ -359,7 +359,7 @@ public class GameGui extends Application {
         }
 
         if (!GameState.MapLook.state && Translator.getCurrentEnemyNumber() >= 0 && Translator.getCurrentEnemyNumber() <= 4){
-            enemyImage.setImage(new Image(enemyFiles[Translator.getCurrentEnemyNumber()].toURI().toString()));
+            enemyImage.setImage(enemyFiles[Translator.getCurrentEnemyNumber()]);
         }
         else if (GameState.MapLook.state){
             for (int falseY = 0; falseY < 5; falseY++) {
